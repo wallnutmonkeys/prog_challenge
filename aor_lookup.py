@@ -3,23 +3,15 @@
 import socket
 import sys
 import json
+from registers import Registers
 
-def load_json(json_filepath):
-    registers = []
-    with open(json_filepath,'r') as reg_file:
-        for line in reg_file:
-            registers.append(json.loads(line.strip()))
-    return registers
-
-def lookup_aor(registers,aor):
-    for r in registers:
-        if r['addressOfRecord'] == aor:
-            return r
-    return None
 
 if __name__ == "__main__":
 
-    registers = load_json('./registrations.json')
+    registers = Registers()
+    registers.from_file('registrations.json')
+    print registers
+    exit(1)
     
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
