@@ -20,7 +20,7 @@ if __name__ == "__main__":
     registers.from_file(REGISTRATION_FILEPATH)
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('localhost', PORT)
+    server_address = ('', PORT)
     sock.bind(server_address)
     sock.listen(1)
     logging.info("listening on port %d" % PORT)
