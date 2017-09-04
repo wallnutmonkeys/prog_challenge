@@ -22,21 +22,25 @@ if __name__ == "__main__":
     sock = socket.socket()
     sock.connect(('localhost', 5000))
 
-    sock.sendall("01577bc1415ed95760000100620002\n")
+    # this aor has 2 registers
+    sock.sendall("7tq72ZFDLfSmhsfkmTzyaDbC27YNeP\n")
     srv_response = receive_response(sock)
     print "received %s back from server" % srv_response
     time.sleep(3)
 
+    # this aor has 1 register
     sock.sendall("0148c1f489badb837d000100620002\n")
     srv_response = receive_response(sock)
     print "received %s back from server" % srv_response
     time.sleep(5)
 
+    # this is a bogus aor
     sock.sendall("01576e593243534655555555620007\n")
     srv_response = receive_response(sock)
     print "received %s back from server" % srv_response
     time.sleep(15)
 
+    # serveur will close the connection before this gets executed
     sock.sendall("34534503948503498503495\n")
     srv_response = receive_response(sock)
     print "received %s back from server" % srv_response
