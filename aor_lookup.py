@@ -8,7 +8,7 @@ def load_json(json_filepath):
     registers = []
     with open(json_filepath,'r') as reg_file:
         for line in reg_file:
-            registers.append(json.loads(line))
+            registers.append(json.loads(line.strip()))
     return registers
 
 def lookup_aor(registers,aor):
@@ -43,10 +43,14 @@ if __name__ == "__main__":
                 if data != '\n':
                     rcv_buff += data
                 else:
-                    print "received: %s" % (rcv_buff,)
-                    response = "blablablablabla"
-                    print "sending back %s" % response
-                    connection.sendall(response + "\n")
+                    aor = rcv_buff
+                    print "looking up aor: %s" % aor
+                    register = lookup_aor(registers, aor)
+                    if not register:
+                        print "register with aor:'%s' not found" % aor
+                    else:
+                        print "register with aor:'%s' was found" % aor
+                        connection.sendall(json.dumps(register) + "\n")
                     rcv_buff = ''
         except socket.timeout:
             print "timeout"
