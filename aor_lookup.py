@@ -11,9 +11,16 @@ def load_json(json_filepath):
             registers.append(json.loads(line))
     return registers
 
+def lookup_aor(registers,aor):
+    for r in registers:
+        if r['addressOfRecord'] == aor:
+            return r
+    return None
+
 if __name__ == "__main__":
 
     registers = load_json('./registrations.json')
+    
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_address = ('localhost', 5000)
