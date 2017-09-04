@@ -1,9 +1,11 @@
 # prog_challenge
 
 ## Synopsis
-Simple implementation of a TCP server that accepts client connections and looks up register data using the provided aor. A simple client that connects to the server and queries it is also included. The server is implemented in the aor_lookup.py file and the client is in client.py. The server has a logfile named aor_lookup.log.
+Simple implementation of a TCP server that accepts client connections and looks up register data using the provided aor and a simple client that connects to the server and queries the server. The server is implemented in the aor_lookup.py file and the client is in client.py. The server has a logfile named aor_lookup.log. 
 
 ## Installation
+
+requires Python 2.7
 
 git clone https://github.com/wallnutmonkeys/prog_challenge.git
 cd prog_challenge
