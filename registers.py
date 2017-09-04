@@ -45,6 +45,8 @@ class Registers:
         """
 
         aor_registers = self.registers[aor]
+        if len(aor_registers) == 1:
+            return json.dumps(aor_registers[0])
         return json.dumps(aor_registers)
 
     def __str__(self):
